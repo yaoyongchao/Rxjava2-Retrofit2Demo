@@ -1,7 +1,9 @@
 package com.yyc.httplib.retrofit2;
 
 /**
- * Created by helin on 2016/10/10 11:52.
+ * @author: Page
+ * @time: 17-8-7
+ * @description: Response preprocessing.
  */
 
 public class ApiException extends RuntimeException{

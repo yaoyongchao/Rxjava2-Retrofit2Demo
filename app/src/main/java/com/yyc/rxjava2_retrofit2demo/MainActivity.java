@@ -15,6 +15,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * @author: Page
+ * @time: 17-8-10
+ * @description: Response preprocessing.
+ */
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
     @BindView(R.id.btn_login)
