@@ -9,13 +9,21 @@ Retrofit2+Rxjava2简易封装demo初始上传 [Blog](http://blog.csdn.net/yyongc
 
 
 ServiceFactory.getService(LoginService.class)
+
                 .login()
+
                 .compose(RxSchedulers.<BaseEntity<User>>ioMain(context))
+
                 .subscribe(new BaseObserver<User>(context) {
+
                     @Override
+
                     public void onSuccess(User user) {
+
                         Log.e(TAG, "User: " + user);
+
                     }
+
                 });
 
 前言：一个网络请求，一般而言，大概有以下步骤：
