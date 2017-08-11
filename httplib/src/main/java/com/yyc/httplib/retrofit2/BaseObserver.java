@@ -40,6 +40,7 @@ public abstract class BaseObserver<T> implements Observer<BaseEntity<T>> {
             onFailure(tBaseEntity.getMsg());
         }
 
+        onCompleted();
     }
 
     @Override
@@ -57,5 +58,9 @@ public abstract class BaseObserver<T> implements Observer<BaseEntity<T>> {
 
     public void onFailure(String msg) {
         Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    public void onCompleted() {
+
     }
 }
