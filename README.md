@@ -19,6 +19,7 @@ ServiceFactory.getService(LoginService.class)
                 });
 
 前言：一个网络请求，一般而言，大概有以下步骤：
+
 1.建立网络链接。
 
 2.请求前的预处理（如：统一处理请求格式、网络判断、ProgressDialog）。
@@ -51,9 +52,11 @@ public class ServiceFactory {
         return RetrofitHelper.getRetrofit().create(service);
     }
 }
+
 OkHttpClient 和 Retrofit的创建请看底部链接 Demo。
 
 二、请求前的预处理：
+
 我是写了一个线程转换类，并在里面做的请求预处理，如下：
 
 public class RxSchedulers {
@@ -123,8 +126,11 @@ public class RxSchedulers {
 
 
 }
+
 在doOnSubscribe中做网络请求和Dailog show。在doFinally中做Dialog dismiss 。disposable.dispose做网络取消。
+
 三、结果预处理：
+
 创建一个BaseObserver类，基础Observer，如下：
 
 public abstract class BaseObserver<T> implements Observer<BaseEntity<T>> {
@@ -171,10 +177,14 @@ public abstract class BaseObserver<T> implements Observer<BaseEntity<T>> {
         Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
     }
 }
+
 BaseEntity:
+
 public class BaseEntity<T> {
     private int code;
+
     private String msg;
+
     private T data;
 
     public int getCode() {
