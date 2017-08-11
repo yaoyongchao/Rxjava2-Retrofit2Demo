@@ -8,7 +8,6 @@ Retrofit2+Rxjava2简易封装demo初始上传 [Blog](http://blog.csdn.net/yyongc
 先上封装后使用网络请求的代码：
 
 
-[java] view plain copy
 ServiceFactory.getService(LoginService.class)
                 .login()
                 .compose(RxSchedulers.<BaseEntity<User>>ioMain(context))
@@ -31,7 +30,6 @@ ServiceFactory.getService(LoginService.class)
 一般我们响应的数据格式如：
 
 
-[java] view plain copy
 {
       "code":1,
       "msg":"success",
@@ -44,7 +42,6 @@ ServiceFactory.getService(LoginService.class)
 创建Service：写一个ServiceFactory创建Service。主要代码如下：
 
 
-[java] view plain copy
 public class ServiceFactory {
     public static <T> T getService(String url ,final  Class<T> service) {
         return RetrofitHelper.getRetrofit(url).create(service);
@@ -59,8 +56,6 @@ OkHttpClient 和 Retrofit的创建请看底部链接 Demo。
 二、请求前的预处理：
 我是写了一个线程转换类，并在里面做的请求预处理，如下：
 
-
-[java] view plain copy
 public class RxSchedulers {
     private static ProgressDialog dialog;
 
@@ -132,8 +127,6 @@ public class RxSchedulers {
 三、结果预处理：
 创建一个BaseObserver类，基础Observer，如下：
 
-
-[java] view plain copy
 public abstract class BaseObserver<T> implements Observer<BaseEntity<T>> {
 
     private static final String TAG = "BaseObserver";
@@ -179,8 +172,6 @@ public abstract class BaseObserver<T> implements Observer<BaseEntity<T>> {
     }
 }
 BaseEntity:
-
-[java] view plain copy
 public class BaseEntity<T> {
     private int code;
     private String msg;
@@ -219,6 +210,7 @@ public class BaseEntity<T> {
                 '}';
     }
 }
+
 该类中做数据处理，把data从响应数据中分离出来，并提前对错误做处理。
 大概基本的思路就这样。
 
@@ -228,6 +220,3 @@ public class BaseEntity<T> {
 
 拜拜啦！！！真不写了。
 
-
-
-Demo地址：Github
