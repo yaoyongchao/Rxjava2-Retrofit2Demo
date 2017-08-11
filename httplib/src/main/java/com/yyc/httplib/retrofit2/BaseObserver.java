@@ -37,7 +37,7 @@ public abstract class BaseObserver<T> implements Observer<BaseEntity<T>> {
             T t = tBaseEntity.getData();
             onSuccess(t);
         } else {
-            onFail(tBaseEntity.getMsg());
+            onFailure(tBaseEntity.getMsg());
         }
 
     }
@@ -55,7 +55,7 @@ public abstract class BaseObserver<T> implements Observer<BaseEntity<T>> {
 
     public abstract void onSuccess(T t);
 
-    public void onFail(String msg) {
+    public void onFailure(String msg) {
         Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
     }
 }
